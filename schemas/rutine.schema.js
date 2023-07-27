@@ -3,18 +3,18 @@ const Joi = require('joi');
 const id = Joi.number().integer();
 const rutine = Joi.string();
 const descriptionRutine = Joi.string();
-const userId = Joi.number().integer();
+const usersId = Joi.number().integer();
 
 const createRutineSchema = Joi.object({
     rutine: rutine.required(),
     descriptionRutine: descriptionRutine.required(),
-    userId: userId.required()
+    usersId: usersId.required()
 });
 
 const updateRutineSchema = Joi.object({
     rutine: rutine,
     descriptionRutine: descriptionRutine,
-    userId: userId
+    usersId: usersId
 });
 
 const getRutineSchema = Joi.object({

@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const id = Joi.number().integer();
 const nameLastname = Joi.string();
-const birthate = Joi.date();
+const birthdate = Joi.date();
 const email = Joi.string().email();
 const password = Joi.string().min(8);
 const role = Joi.string().min(5)
@@ -11,7 +11,7 @@ const membershipId = Joi.number().integer()
 
 const createUserSchema = Joi.object({
     nameLastname: nameLastname.required(),
-    birthate: birthate.required(),
+    birthdate: birthdate.required(),
     email: email.required(),
     password: password.required(),
     role: role.required(),
@@ -20,7 +20,7 @@ const createUserSchema = Joi.object({
 
 const updateUserSchema = Joi.object({
     nameLastname,
-    birthate,    
+    birthdate,    
     email,
     role,
     membershipId

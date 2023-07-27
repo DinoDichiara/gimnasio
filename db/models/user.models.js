@@ -58,7 +58,7 @@ class Users extends Model {
     this.belongsTo(models.Memberships, { as: "membership" });
     this.hasMany(models.Rutines, {
       as: "rutines",
-      foreignKey: "userId",
+      foreignKey: "usersId",
     });
   }
 
