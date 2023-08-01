@@ -5,7 +5,7 @@ const nameLastname = Joi.string();
 const birthdate = Joi.date();
 const email = Joi.string().email();
 const password = Joi.string().min(8);
-const role = Joi.string().min(5)
+const rolesId = Joi.number().integer();
 const membershipId = Joi.number().integer()
 
 
@@ -14,7 +14,7 @@ const createUserSchema = Joi.object({
     birthdate: birthdate.required(),
     email: email.required(),
     password: password.required(),
-    role: role.required(),
+    rolesId: rolesId.required(),
     membershipId: membershipId.required()
 });
 
@@ -22,7 +22,7 @@ const updateUserSchema = Joi.object({
     nameLastname,
     birthdate,    
     email,
-    role,
+    rolesId,
     membershipId
 });
 

@@ -4,6 +4,8 @@ const { Categories, CategoriesSchema } = require('./category.models');
 const { Exercises, ExercisesSchema } = require('./exercises.models');
 const { Rutines, RutinesSchema } = require('./rutines.models');
 const { Users, UserSchema } = require('./user.models');
+const { Roles, RoleSchema } = require('./role.models');
+
 
 
 function setupModels(sequelize) {
@@ -13,6 +15,7 @@ function setupModels(sequelize) {
     Exercises.init(ExercisesSchema, Exercises.config(sequelize));
     Rutines.init(RutinesSchema, Rutines.config(sequelize));
     Users.init(UserSchema, Users.config(sequelize));
+    Roles.init(RoleSchema, Roles.config(sequelize));
 
     RutinesExercises.associate(sequelize.models);
     Memberships.associate(sequelize.models);
@@ -20,6 +23,7 @@ function setupModels(sequelize) {
     Exercises.associate(sequelize.models);
     Rutines.associate(sequelize.models);
     Users.associate(sequelize.models);
+    Roles.associate(sequelize.models);
 }
 
 module.exports = setupModels

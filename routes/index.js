@@ -5,6 +5,7 @@ const exercisesRouter = require('./exercise.routes')
 const rutinesRouter = require('./rutine.routes') 
 const membershipRouter = require('./membership.routes') 
 const categoryRouter = require('./category.routes') 
+const roleRouter = require('./role.routes') 
 
 
 
@@ -17,6 +18,7 @@ function routerApi(app) {
     router.use('/rutines', rutinesRouter )
     router.use('/membership', membershipRouter )
     router.use('/category', categoryRouter )
+    router.use('/role', roleRouter )
 }
 
 module.exports = routerApi

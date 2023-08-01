@@ -19,7 +19,7 @@ const ExercisesSchema = {
     type: DataTypes.TEXT,
   },
   categoryId: {
-    // field: "category_id",
+    field: "category_id",
     allowNull: false,
     type: DataTypes.INTEGER,
     references: {

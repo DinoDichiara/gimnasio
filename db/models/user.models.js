@@ -1,6 +1,7 @@
 const { Model, DataTypes, Sequelize } = require("sequelize");
 
 const { MEMBERSHIP_TABLE } = require("./membership.models");
+const { ROLE_TABLE } = require("./role.models");
 
 const USUARIO_TABLE = "users";
 
@@ -35,11 +36,6 @@ const UserSchema = {
     field: "create_at",
     defaultValue: Sequelize.NOW,
   },
-  role: {
-    allowNull: false,
-    type: DataTypes.STRING,
-    defaultValue: "users",
-  },
   membershipId: {
     field: "membership_id",
     allowNull: false,
@@ -51,11 +47,23 @@ const UserSchema = {
     onUpdate: "CASCADE",
     onDelete: "SET NULL",
   },
+  rolesId: {
+    field: "role_id",
+    allowNull: false,
+    type: DataTypes.INTEGER,
+    references: {
+      model: ROLE_TABLE,
+      key: "id",
+    },
+    onUpdate: "CASCADE",
+    onDelete: "SET NULL",
+  }
 };
 
 class Users extends Model {
   static associate(models) {
     this.belongsTo(models.Memberships, { as: "membership" });
+    this.belongsTo(models.Roles, { as: "roles" });
     this.hasMany(models.Rutines, {
       as: "rutines",
       foreignKey: "usersId",

@@ -1,6 +1,6 @@
 'use strict'
 
-const { MembershipSchema, MEMBERSHIP_TABLE } = require('../models/membership.models');
+const { MembershipSchema, MEMBERSHIP_TABLE } = require('../db/models/membership.models');
 
 module.exports = {
   up: async (queryInterface) => {
