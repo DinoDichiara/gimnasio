@@ -57,7 +57,7 @@ const UserSchema = {
     },
     onUpdate: "CASCADE",
     onDelete: "SET NULL",
-  }
+  },
 };
 
 class Users extends Model {
