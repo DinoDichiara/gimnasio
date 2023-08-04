@@ -1,4 +1,5 @@
 const boom = require('@hapi/boom')
+
 const { models } = require('./../libs/sequelize')
 
 class RutinesService {
@@ -21,6 +22,11 @@ class RutinesService {
             throw boom.notFound('rutine not found')
         }
         return rutine
+    }
+
+    async findByUser(usersId) {
+        const rutines = await models.Rutines.findByPk(usersId) 
+        return rutines
     }
 
     async update(id, changes) {

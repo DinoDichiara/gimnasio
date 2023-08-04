@@ -6,3 +6,12 @@ Entrenadores: Crear y editar rutinas de los Clientes.
 Recepcionistas: Cobro y registro de nuevos clientes.
 
 Tanto los Entrenadores como los Recepcionistas, tiene acceso como un cliente a cualquier sucursal 
+
+
+
+
+Error que estoy teniendo: 
+al darle acceso al usuario, y querer traer sus rutinas, me sale un "null"
+
+Preguntas:
+Al cargar una nueva variable de entorno, se deve guardar entre comillas o sin?

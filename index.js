@@ -9,6 +9,8 @@ const port = 3000;
 
 app.use(express.json())
 
+require('./utils/auth')
+
 app.get('/', (req, res) => {
     res.send('GIMNASIO')
 });
