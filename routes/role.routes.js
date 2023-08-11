@@ -1,23 +1,28 @@
-const express = require('express')
+const express = require("express");
 
-const RoleService = require('./../services/role.service')
-const validatorHandler = require('../middlewares/validator.handler');
-const { createRoleSchema, getRoleSchema, updateRoleSchema } = require('../schemas/role.schema');
+const RoleService = require("./../services/role.service");
+const validatorHandler = require("../middlewares/validator.handler");
+const {
+  createRoleSchema,
+  getRoleSchema,
+  updateRoleSchema,
+} = require("../schemas/role.schema");
 
-const router = express.Router()
-const service = new RoleService()
+const router = express.Router();
+const service = new RoleService();
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const roles = await service.find()
-    res.json(roles)
+    const roles = await service.find();
+    res.json(roles);
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
-router.post('/',
-  validatorHandler(createRoleSchema, 'body'),
+router.post(
+  "/",
+  validatorHandler(createRoleSchema, "body"),
   async (req, res, next) => {
     try {
       const body = req.body;
@@ -29,9 +34,10 @@ router.post('/',
   }
 );
 
-router.patch('/:id',
-  validatorHandler(getRoleSchema, 'params'),
-  validatorHandler(updateRoleSchema, 'body'),
+router.patch(
+  "/:id",
+  validatorHandler(getRoleSchema, "params"),
+  validatorHandler(updateRoleSchema, "body"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -44,8 +50,9 @@ router.patch('/:id',
   }
 );
 
-router.delete('/:id',
-  validatorHandler(getRoleSchema, 'params'),
+router.delete(
+  "/:id",
+  validatorHandler(getRoleSchema, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -57,4 +64,4 @@ router.delete('/:id',
   }
 );
 
-module.exports = router
+module.exports = router;

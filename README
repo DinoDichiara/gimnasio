@@ -1,17 +1,13 @@
-Una plataforma para el uso completo de la administracion de un gimnasio, que le brinda la posibilidad de generar sus propias rutinas al cliente, abonar el tipo de subscripcion que este desee. Por otro se encuentran los entrenadores, que son los que se encargan de guiar a los clientes, personalizarle/editarles sus rutinas, y tener un seguimiento de los mismos. Luego estan los recepcionistas, que son los encargados de recibir a los clientes, tanto para el ingreso, como para el cobro de las membresias. 
+Una plataforma para el uso completo de la administracion de un gimnasio, que le brinda la posibilidad de generar sus propias rutinas al cliente, abonar el tipo de subscripcion que este desee. Por otro se encuentran los entrenadores, que son los que se encargan de guiar a los clientes, personalizarle/editarles sus rutinas, y tener un seguimiento de los mismos. Luego estan los recepcionistas, que son los encargados de recibir a los clientes, tanto para el ingreso, como para el cobro de las membresias.
 Las funciones en sintecis que se pueden hacer, son las siguientes:
 
 Clientes: Crear y editar rutinas, acceso a todas las sucursales, pago de suscripcion utilizando la API de Mercado Pago. Con la subscripcion Full, tienen un mes de garantía
 Entrenadores: Crear y editar rutinas de los Clientes.
 Recepcionistas: Cobro y registro de nuevos clientes.
 
-Tanto los Entrenadores como los Recepcionistas, tiene acceso como un cliente a cualquier sucursal 
+Tanto los Entrenadores como los Recepcionistas, tiene acceso como un cliente a cualquier sucursal
 
-
-
-
-Error que estoy teniendo: 
+Error que estoy teniendo:
 al darle acceso al usuario, y querer traer sus rutinas, me sale un "null"
 
 Preguntas:
-Al cargar una nueva variable de entorno, se deve guardar entre comillas o sin?

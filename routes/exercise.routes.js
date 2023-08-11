@@ -1,24 +1,28 @@
-const express = require('express')
+const express = require("express");
 
-const ExercisesService = require('../services/exercise.service')
-const validatorHandler = require('../middlewares/validator.handler');
-const { createExerciseSchema, updateExerciseSchema, getExerciseSchema } = require('../schemas/exercise.schema');
+const ExercisesService = require("../services/exercise.service");
+const validatorHandler = require("../middlewares/validator.handler");
+const {
+  createExerciseSchema,
+  updateExerciseSchema,
+  getExerciseSchema,
+} = require("../schemas/exercise.schema");
 
+const router = express.Router();
+const service = new ExercisesService();
 
-const router = express.Router()
-const service = new ExercisesService()
-
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const exercises = await service.find()
-    res.json(exercises)
+    const exercises = await service.find();
+    res.json(exercises);
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
-router.get('/:id',
-  validatorHandler(getExerciseSchema, 'params'),
+router.get(
+  "/:id",
+  validatorHandler(getExerciseSchema, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -30,8 +34,9 @@ router.get('/:id',
   }
 );
 
-router.post('/',
-  validatorHandler(createExerciseSchema, 'body'),
+router.post(
+  "/",
+  validatorHandler(createExerciseSchema, "body"),
   async (req, res, next) => {
     try {
       const body = req.body;
@@ -43,9 +48,10 @@ router.post('/',
   }
 );
 
-router.patch('/:id',
-  validatorHandler(getExerciseSchema, 'params'),
-  validatorHandler(updateExerciseSchema, 'body'),
+router.patch(
+  "/:id",
+  validatorHandler(getExerciseSchema, "params"),
+  validatorHandler(updateExerciseSchema, "body"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -58,8 +64,9 @@ router.patch('/:id',
   }
 );
 
-router.delete('/:id',
-  validatorHandler(getExerciseSchema, 'params'),
+router.delete(
+  "/:id",
+  validatorHandler(getExerciseSchema, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -71,4 +78,4 @@ router.delete('/:id',
   }
 );
 
-module.exports = router         
+module.exports = router;

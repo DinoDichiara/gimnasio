@@ -1,23 +1,28 @@
-const express = require('express');
+const express = require("express");
 
-const RutinesService = require('../services/rutine.service');
-const validatorHandler = require('../middlewares/validator.handler');
-const { createRutineSchema, updateRutineSchema, getRutineSchema } = require('../schemas/rutine.schema');
+const RutinesService = require("../services/rutine.service");
+const validatorHandler = require("../middlewares/validator.handler");
+const {
+  createRutineSchema,
+  updateRutineSchema,
+  getRutineSchema,
+} = require("../schemas/rutine.schema");
 
-const router = express.Router()
-const service = new RutinesService
+const router = express.Router();
+const service = new RutinesService();
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const rutines = await service.find()
-    res.json(rutines)
+    const rutines = await service.find();
+    res.json(rutines);
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
-router.get('/:id',
-  validatorHandler(getRutineSchema, 'params'),
+router.get(
+  "/:id",
+  validatorHandler(getRutineSchema, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -29,8 +34,9 @@ router.get('/:id',
   }
 );
 
-router.post('/',
-  validatorHandler(createRutineSchema, 'body'),
+router.post(
+  "/",
+  validatorHandler(createRutineSchema, "body"),
   async (req, res, next) => {
     try {
       const body = req.body;
@@ -42,9 +48,10 @@ router.post('/',
   }
 );
 
-router.patch('/:id',
-  validatorHandler(getRutineSchema, 'params'),
-  validatorHandler(updateRutineSchema, 'body'),
+router.patch(
+  "/:id",
+  validatorHandler(getRutineSchema, "params"),
+  validatorHandler(updateRutineSchema, "body"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -57,8 +64,9 @@ router.patch('/:id',
   }
 );
 
-router.delete('/:id',
-  validatorHandler(getRutineSchema, 'params'),
+router.delete(
+  "/:id",
+  validatorHandler(getRutineSchema, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -70,5 +78,4 @@ router.delete('/:id',
   }
 );
 
-module.exports = router
-
+module.exports = router;

@@ -19,6 +19,6 @@ router.get(
       next(error);
     }
   }
-)
+);
 
 module.exports = router;

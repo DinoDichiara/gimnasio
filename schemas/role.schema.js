@@ -1,21 +1,21 @@
-const Joi = require('joi');
+const Joi = require("joi");
 
 const id = Joi.number().integer();
 const role = Joi.string();
 const profit = Joi.string();
 
 const createRoleSchema = Joi.object({
-    role: role.required(),
-    profit: profit.required()
+  role: role.required(),
+  profit: profit.required(),
 });
 
 const updateRoleSchema = Joi.object({
-    role: role,
-    profit: profit
+  role: role,
+  profit: profit,
 });
 
 const getRoleSchema = Joi.object({
-    id: id.required(),
+  id: id.required(),
 });
 
-module.exports = { createRoleSchema, updateRoleSchema, getRoleSchema }
+module.exports = { createRoleSchema, updateRoleSchema, getRoleSchema };

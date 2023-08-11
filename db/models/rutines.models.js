@@ -4,7 +4,7 @@ const { USUARIO_TABLE } = require("./user.models");
 const RUTINA_TABLE = "rutines";
 
 const RutinesSchema = {
-  id: {                               
+  id: {
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
@@ -34,18 +34,17 @@ const RutinesSchema = {
 
 class Rutines extends Model {
   static associate(models) {
-
     this.belongsTo(models.Users, { as: "users" });
-    
+
     this.belongsToMany(models.Exercises, {
-      as: 'items',
+      as: "items",
       through: models.RutinesExercises,
-      foreignKey: 'rutineId',
-      otherKey: 'exerciseId'
-    })
+      foreignKey: "rutineId",
+      otherKey: "exerciseId",
+    });
   }
   static config(sequelize) {
-    return {    
+    return {
       sequelize,
       tableName: RUTINA_TABLE,
       modelName: "Rutines",

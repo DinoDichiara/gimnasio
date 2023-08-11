@@ -33,28 +33,38 @@ class AuthService {
       token,
     };
   }
-  async sendMail(email) {
+
+  async sendRecovery(email) {
     const user = await service.findByEmail(email);
     if (!user) {
       throw boom.unauthorized();
     }
+    const payload = { sub: user.id };
+    const token = jwt.sign(payload, config.jwtSecret, { expiresIn: "15min" });
+    const link = `http://myfrontend.com/recovery?token=${token}`;
+    await service.update(user.id, { recoveryToken: token });
+    const mail = {
+      from: config.smtpEmail,
+      to: `${user.email}`,
+      subject: "Recuperacion de tu constraseña",
+      html: `<b>Ingrese a este link => ${link}</b>`,
+    };
+    const rta = await this.sendMail(mail);
+    return rta;
+  }
+
+  async sendMail(infoMail) {
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
-      port: 465,
       secure: true,
+      port: 465,
       auth: {
-        user: config.mail,
-        pass: config.pass,
+        user: config.smtpEmail,
+        pass: config.smtpPassword,
       },
     });
-    await transporter.sendMail({
-      from: config.mail, // sender address
-      to: `${user.email}`, // list of receivers
-      subject: "Éste es un mensaje automatico", // Subject line
-      text: "En una hora estoy allá, esperame con los mates", // plain text body
-      html: "<b>En una hora estoy allá, esperame con los mates</b>", // html body
-    });
-    return { message: 'mail sent'}
+    await transporter.sendMail(infoMail);
+    return { message: "mail sent" };
   }
 }
 

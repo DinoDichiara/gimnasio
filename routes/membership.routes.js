@@ -1,23 +1,28 @@
-const express = require('express')
+const express = require("express");
 
-const MembershipService = require('./../services/membership.service')
-const validatorHandler = require('../middlewares/validator.handler');
-const { createMembershipSchema, updateMembershipSchema, getMembershipSchema } = require('../schemas/membership.schema');
+const MembershipService = require("./../services/membership.service");
+const validatorHandler = require("../middlewares/validator.handler");
+const {
+  createMembershipSchema,
+  updateMembershipSchema,
+  getMembershipSchema,
+} = require("../schemas/membership.schema");
 
-const router = express.Router()
-const service = new MembershipService()
+const router = express.Router();
+const service = new MembershipService();
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const memberships = await service.find()
-    res.json(memberships)
+    const memberships = await service.find();
+    res.json(memberships);
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
-router.get('/:id',
-  validatorHandler(getMembershipSchema, 'params'),
+router.get(
+  "/:id",
+  validatorHandler(getMembershipSchema, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -29,8 +34,9 @@ router.get('/:id',
   }
 );
 
-router.post('/',
-  validatorHandler(createMembershipSchema, 'body'),
+router.post(
+  "/",
+  validatorHandler(createMembershipSchema, "body"),
   async (req, res, next) => {
     try {
       const body = req.body;
@@ -42,9 +48,10 @@ router.post('/',
   }
 );
 
-router.patch('/:id',
-  validatorHandler(getMembershipSchema, 'params'),
-  validatorHandler(updateMembershipSchema, 'body'),
+router.patch(
+  "/:id",
+  validatorHandler(getMembershipSchema, "params"),
+  validatorHandler(updateMembershipSchema, "body"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -57,8 +64,9 @@ router.patch('/:id',
   }
 );
 
-router.delete('/:id',
-  validatorHandler(getMembershipSchema, 'params'),
+router.delete(
+  "/:id",
+  validatorHandler(getMembershipSchema, "params"),
   async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -70,4 +78,4 @@ router.delete('/:id',
   }
 );
 
-module.exports = router
+module.exports = router;

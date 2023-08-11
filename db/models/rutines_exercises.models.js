@@ -14,7 +14,7 @@ const RutinesExercisesSchema = {
   },
   amount: {
     allowNull: false,
-    type: DataTypes.INTEGER
+    type: DataTypes.INTEGER,
   },
   rutineId: {
     field: "rutine_id",
@@ -56,4 +56,8 @@ class RutinesExercises extends Model {
   }
 }
 
-module.exports = { RUTINE_EXERCISE_TABLE, RutinesExercisesSchema, RutinesExercises };
+module.exports = {
+  RUTINE_EXERCISE_TABLE,
+  RutinesExercisesSchema,
+  RutinesExercises,
+};
